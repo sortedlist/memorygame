@@ -1,0 +1,113 @@
+/* entire container, keeps perspective */
+.flip-container {
+	perspective: 1000px;
+}
+	/* flip the pane when hovered */
+	.flip-container.selected .flipper, .flip-container.removed .flipper {
+		transform: rotateY(180deg);
+	}
+
+/* flip speed goes here */
+.flipper {
+	transition: 0.5s;
+	transform-style: preserve-3d;
+ 
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+	transform: rotateY(180deg);
+}
+
+.flip-container, .front, .back, .flipper{
+    min-width: 10vw;
+    min-height: 10vw;
+    margin: 2px;
+    border-radius: 15px;
+}
+
+/*  */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.game-name {
+    text-align: center;
+    margin: 25px;
+    color: rgb(134, 0, 105);
+    font-size: 40px;
+}
+
+.game-table {
+    margin: auto;
+}
+
+.flip-container {
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+
+.removed {
+    opacity: 0;
+}
+
+.front {
+    background: rgb(96, 214, 41);
+    display: flex;
+}
+
+.back {
+    background: blue;
+    display: flex;
+}
+
+.icon {
+    color: white;
+    font-size: 7vw;
+    margin: auto;
+}
+
+.fa-react {
+    color: rgb(0, 226, 226);
+}
+
+.modal-darkness {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background: black;
+    opacity: 0.5;
+}
+
+
+.modal-window {
+    width: 70%;
+    height: 250px;
+    background: white;
+    position: absolute;
+    left: 15%;
+    top: 100px;
+}
